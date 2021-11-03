@@ -1,0 +1,30 @@
+<odoo>
+
+
+    <report
+            id="invoice_report_id"
+            model="account.move"
+            report_type="qweb-pdf"
+            string="Jazz Invoice"
+            name="khaleef_reports.khaleef_reports_id"
+            file="khaleef_reports.khaleef_reports_id"
+    />
+
+    <report
+            id="invoice_ufone_report_id"
+            model="account.move"
+            report_type="qweb-pdf"
+            string="Ufone Invoice"
+            name="khaleef_reports.khaleef_reports_ufone_id"
+            file="khaleef_reports.khaleef_reports_ufone_id"
+    />
+
+<!--     <report-->
+<!--            id="invoice_ufone_report_id_html"-->
+<!--            model="account.move"-->
+<!--            report_type="qweb-html"-->
+<!--            string="Ufone Invoice html"-->
+<!--            name="khaleef_reports.khaleef_reports_ufone_id"-->
+<!--            file="khaleef_reports.khaleef_reports_ufone_id"-->
+<!--    />-->
+</odoo>

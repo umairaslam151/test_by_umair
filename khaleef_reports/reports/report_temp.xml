@@ -1,0 +1,363 @@
+<odoo>
+    <template id="khaleef_reports_id">
+        <t t-call="web.html_container">
+            <!--            <t t-call="web.internal_layout">-->
+            <t t-call="khaleef_reports.khaleef_reports_jazz"/>
+
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <style>
+                        .invoice{font-size:17px;}
+                        .inFremontvo{font-size:14px;}
+                    </style>
+                    <div class="page" style="margin-top:-50px;">
+                        <h2>
+                            <center>
+                                <strong>INVOICE</strong>
+                            </center>
+                        </h2>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td width="50%" class="invoice">
+                                    <strong>
+                                        <span t-field="o.company_id.name"/>
+                                    </strong>
+                                </td>
+                                <td width="18%"></td>
+                                <td width="12%" class="invoice">
+                                    <strong>Invoice#</strong>
+                                </td>
+                                <td class="text-right" width="20%">
+                                    <span t-field="o.name"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invo">
+                                    <span t-field="o.company_id.street"/>
+                                </td>
+                                <td width="18%"></td>
+                                <td width="12%" class="invoice">
+                                    <strong>Invoice Date:</strong>
+                                </td>
+                                <td class="text-right" width="20%">
+                                    <span t-field="o.invoice_date"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invo">
+                                    <span t-field="o.company_id.street2"/>
+
+                                </td>
+                                <td width="18%"></td>
+                                <td width="12%" class="invoice">
+                                    <strong>Due Date:</strong>
+                                </td>
+                                <td class="text-right" width="20%">
+                                    <!--                                    <span t-field="o.invoice_payment_term_id"/>-->
+                                    <span t-field="o.invoice_date_due"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invo">
+                                    <span t-field="o.company_id.city"/>
+                                    <span t-field="o.company_id.country_id"/>
+
+                                    <!--                                    <span t-field="o.company_id.city"/>-->
+                                </td>
+                                <td width="18%"></td>
+                                <td width="12%" class="invoice">
+                                    <strong>Month</strong>
+                                </td>
+                                <td class="text-right" width="30%">
+                                    <t t-if="o.month">
+                                        <span t-field="o.month"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%"></td>
+                                <td width="18%"></td>
+                                <td width="12%" class="invoice">
+                                    <strong>NTN</strong>
+                                </td>
+                                <td class="text-right" width="20%">
+                                    <span t-field="o.company_id.ntn"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invoice">
+                                    <strong>Bill To:</strong>
+                                </td>
+                                <td width="18%"></td>
+                                <td width="12%" class="invoice">
+                                    <strong>PNTN</strong>
+                                </td>
+                                <td class="text-right" width="30%">
+                                    <span t-field="o.company_id.strn"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invoice">
+                                    <strong>
+                                        <span t-field="o.partner_id.name"/>
+                                    </strong>
+                                </td>
+                                <td width="20%"></td>
+                                <td width="30%" class="invoice">
+                                    <strong></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invo">
+                                    <span t-field="o.partner_id.street"/>
+                                    <span t-field="o.partner_id.street2"/>
+                                </td>
+                                <td width="20%"></td>
+                                <td width="30%" class="invoice">
+                                    <strong></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="invo">
+                                    <span t-field="o.partner_id.city"/>
+                                    <span t-field="o.partner_id.country_id"/>
+                                </td>
+                                <td width="20%"></td>
+                                <td width="30%" class="invoice">
+                                    <strong></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    NTN #
+                                    <span t-field="o.partner_id.ntn_p"></span>
+                                </td>
+                                <td width="20%"></td>
+                                <td width="30%" class="invoice">
+                                    <strong></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    STRN #
+                                    <span t-field="o.partner_id.strn_new"></span>
+                                </td>
+                                <td width="20%"></td>
+                                <td width="30%" class="invoice">
+                                    <strong></strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <style>
+                            .table_bor{border:2px solid black; margin: auto;
+                            text-align:center;
+                            vertical-align: middle;
+                            padding: 5px;}
+                            .table_body{border:2px solid black; text-align:center; font-size:14px;}
+                        </style>
+                        <br/>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <th width="5%" class="table_bor">
+                                    Entity
+                                </th>
+                                <th width="20%" class="table_bor">Short Code/UCIP</th>
+                                <th width="15%" class="table_bor">Description</th>
+                                <th width="5%" class="table_bor">Counts</th>
+                                <th width="5%" class="table_bor">Event
+                                    <br/>
+                                    Type
+                                </th>
+                                <th width="10%" class="table_bor">Vendor
+                                    <br/>
+                                    Applied
+                                    <br/>
+                                    Rate
+                                </th>
+                                <th width="10%" class="table_bor">Total Revenue</th>
+                                <th width="11%" class="table_bor">Percentage
+                                    <br/>
+                                    Share
+                                    <br/>
+                                    (Vendor)
+                                </th>
+                                <th width="19%" class="table_bor">Vendor Share Amount</th>
+                            </tr>
+                            <tbody>
+                                <t t-foreach="o.invoice_line_ids" t-as="us">
+                                    <tr>
+                                        <td class="table_body">
+                                            <span t-field="us.entity"/>
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.ufone_shart_code_type"/>
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.product_id.name"/>
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.quantity"/>
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.event_type"/>
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.price_unit"/>
+                                        </td>
+                                        <td class="table_body">
+                                            <t t-set="amount_price"
+                                               t-value="(us.quantity * us.price_unit)"/>
+                                            <t t-esc="amount_price"
+                                               t-options='{"widget": "float", "precision": 2}'/>
+                                            <!--                                            <span t-field="us.price_subtotal"/>-->
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.discount"/>%
+                                        </td>
+                                        <td class="table_body">
+                                            <span t-field="us.price_subtotal"/>
+                                            <!--                                            <t t-set="amount_price"-->
+                                            <!--                                               t-value="(us.price_subtotal * us.discount)"/>-->
+                                            <!--                                            <t t-esc="amount_price"-->
+                                            <!--                                               t-options='{"widget": "float", "precision": 2}'/>-->
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table width="100%">
+                            <tr>
+                                <td style="border-left:2px solid black; border-right:2px solid black; text-align:right; padding-right: 20px !important;"
+                                    width="82.6%">
+                                    Total
+                                </td>
+                                <td style="border-right:2px solid black; font-size:14px;" width="17.4%">
+                                    <center>
+                                        <span t-field="o.amount_untaxed"/>
+
+                                    </center>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table_bor" width="82.6%"
+                                    style="text-align:right; padding-right: 20px !important;">5% GST
+                                </td>
+                                <td style="border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black; font-size:14px;"
+                                    width="17.4%" t-foreach="o.amount_by_group"
+                                    t-as="amount_by_group">
+                                    <center>
+                                        <span t-esc="amount_by_group[3]"/>
+                                    </center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="82.6%"
+                                    style="border-left:2px solid black; border-right:2px solid black; text-align:right; padding-right: 20px !important;">
+                                    <strong>
+                                        Total Outstanding
+                                    </strong>
+                                </td>
+                                <td width="17.4%" style="border-right:2px solid black; font-size:14px;">
+                                    <strong>
+                                        <center>
+                                            <span t-field="o.amount_total"/>
+                                        </center>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%">
+                            <tr>
+                                <td class="table_bor" width="100%">
+                                    <strong>Total Amount (In Words):</strong>
+                                    <t t-esc="o.currency_id.amount_to_text(o.amount_total)"/>'s Only
+
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td width="70%"></td>
+                                <td width="30%">______________________________________
+                                    <br/>
+                                    <strong>
+                                        <center>Manager Accounts</center>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="khaleef_reports_jazz" t-name="web.external_layout_standard">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <style>
+                    .heading_table_style{ padding-left:2px;padding-right:2px;}
+                </style>
+                <div t-attf-class="header">
+                    <t t-foreach="docs" t-as="o">
+                        <style>
+                            .header{font-size:10px;}
+                        </style>
+                        <div class="row">
+                            <div class="col-8">
+                                <div>
+                                    <img t-att-src="image_data_uri(o.company_id.logo)" style="width:50%;"/>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div style="text-align: right;">
+                                    <h6>
+                                        <span style="margin-bottom:20px;" t-field="o.company_id.email"/>
+                                    </h6>
+                                    <h6>
+                                        <span t-field="doc.company_id.website"/>
+                                    </h6>
+                                    <h6>
+                                        <span t-field="doc.company_id.phone"/>
+                                    </h6>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </t>
+                </div>
+
+                <div t-attf-class="footer">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="header" style="font-size:14px; margin-bottom:20px; text-align:center;">Income tax
+                                is
+                                to be deducted @ 3%
+                                as per section 2(i), Division III, Part III of the First
+                                Schedule to Income Tax Ordinance, 2001.
+                            </p>
+                            <p class="header" style="font-size:14px; margin-bottom:20px; text-align:center;">
+                                <span t-field="doc.company_id.street"/>
+                                <span t-field="doc.company_id.street2"/>
+                                <span t-field="doc.company_id.city"/>
+                                <span t-field="doc.company_id.country_id"/>
+                            </p>
+                        </div>
+                    </div>
+                    <!--            </div>-->
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

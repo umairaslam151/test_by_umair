@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="khaleef_reports_purchase_quotation_id" inherit_id="purchase.report_purchasequotation_document">
+                 <xpath expr="//t[@t-call='web.external_layout']" position="before">
+                <t t-call="khaleef_reports.khaleef_reports_purchase_order_template_id"/>
+            </xpath>
+        </template>
+        <template id="khaleef_reports_purchase_order_id" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//t[@t-call='web.external_layout']" position="before">
+                <t t-call="khaleef_reports.khaleef_reports_purchase_order_template_id"/>
+            </xpath>
+        </template>
+
+        <template id="khaleef_reports_purchase_order_template_id" t-name="web.external_layout_standard">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <style>
+                        .heading_table_style{ padding-left:2px;padding-right:2px;}
+                    </style>
+                    <div t-attf-class="header">
+                        <t t-foreach="docs" t-as="o">
+                            <style>
+                                .header{font-size:10px;}
+                            </style>
+                            <div class="row">
+                                <div class="col-8">
+<!--                                    <div>-->
+                                        <img t-att-src="image_data_uri(o.company_id.logo)" style="width:50%; padding-top:40px !important;"/>
+<!--                                        <img t-att-src="image_data_uri(o.company_id.logo)" style="width:50%; padding-top:40px !important;"/>-->
+<!--                                    </div>-->
+                                </div>
+                                <div class="col-4" style="padding-top:0!important;">
+                                    <img src="khaleef_reports/static/img/cart.jpg" widget="image" width="200px"
+                                         height="200px"/>
+                                    <!--                                    <div style="text-align: right;">-->
+                                    <!--                                        <h6>-->
+                                    <!--                                            <span style="margin-bottom:20px;" t-field="o.company_id.email"/>-->
+                                    <!--                                        </h6>-->
+                                    <!--                                        <h6>-->
+                                    <!--                                            <span t-field="doc.company_id.website"/>-->
+                                    <!--                                        </h6>-->
+                                    <!--                                        <h6>-->
+                                    <!--                                            <span t-field="doc.company_id.phone"/>-->
+                                    <!--                                        </h6>-->
+                                    <!--                                    </div>-->
+                                </div>
+
+                            </div>
+
+                        </t>
+                    </div>
+
+                    <div t-attf-class="footer">
+                        <!--                        <div class="row">-->
+                        <table width="100%">
+                            <tr>
+                                <td width="33%">
+                                    <center>
+                                        <i class="fa fa-envelope-o fa-fw" style="font-size:40px; padding-right: 10px;padding-top:40px;"></i>
+
+                                        <span  t-field="o.company_id.email"/>
+
+                                    </center>
+                                </td>
+                                <td width="33%">
+                                    <center>
+                                        <i class="fa fa-globe" aria-hidden="true"
+                                           style="font-size:40px; padding-right: 10px;padding-top:40px;"></i>
+
+                                        <span  t-field="doc.company_id.website"/>
+
+                                    </center>
+                                </td>
+                                <td width="33%">
+                                    <center>
+                                        <i class="fa fa-phone icon-large"
+                                           style="font-size:40px; padding-right: 10px;padding-top:40px;"></i>
+
+                                        <span t-field="doc.company_id.phone"/>
+                                    </center>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!--                    </div>-->
+                </t>
+            </t>
+
+        </template>
+
+
+    </data>
+</odoo>
